@@ -11,6 +11,6 @@
     <title></title>
 </head>
 <body>
-  Home
+  Home - JSP file
 </body>
 </html>

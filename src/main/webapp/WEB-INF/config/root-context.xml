@@ -11,6 +11,4 @@
 
     <mvc:annotation-driven />
 
-    <context:component-scan base-package="pl.jrola.trainings" />
-
 </beans>
