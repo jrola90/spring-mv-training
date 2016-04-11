@@ -14,5 +14,9 @@
 </head>
 <body>
   <h1>Home - JSP file</h1>
-</body>
+
+  <a href="<spring:url value="/servlet01/project/home"/>">Home</a> |
+  <a href="<spring:url value="/servlet01/project/add"/>">Add Project</a>
+
+    </body>
 </html>
