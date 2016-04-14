@@ -10,13 +10,12 @@
 <html>
 <head>
     <title></title>
-  <link rel="stylesheet" href="<spring:url value="/resources/styles/styles.css" />" type="text/css" />
+    <link rel="stylesheet" href="<spring:url value="/resources/styles/styles.css" />" type="text/css"/>
 </head>
 <body>
-  <h1>Home - JSP file</h1>
+<h1>Home - JSP file</h1>
 
-  <a href="<spring:url value="/servlet01/project/home"/>">Home</a> |
-  <a href="<spring:url value="/servlet01/project/add"/>">Add Project</a>
+<jsp:include page="header.jsp"/>
 
-    </body>
+</body>
 </html>
