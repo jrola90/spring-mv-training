@@ -9,7 +9,11 @@
 
 	<mvc:annotation-driven />
 
+	<!-- controllers -->
 	<context:component-scan base-package="pl.jrola.trainings.controllers.p01" />
+
+	<!-- services -->
+	<context:component-scan base-package="pl.jrola.trainings.services" />
 
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />

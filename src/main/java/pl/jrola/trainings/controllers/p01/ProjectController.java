@@ -1,13 +1,14 @@
 package pl.jrola.trainings.controllers.p01;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import pl.jrola.trainings.services.ProjectService;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 /**
  * Created by JrQ- on 2016-04-17.
@@ -15,6 +16,9 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping(value = "project")
 public class ProjectController {
+
+    @Autowired
+    private ProjectService service;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String addView() {
@@ -45,7 +49,14 @@ public class ProjectController {
     @RequestMapping(value = "/add/", method = RequestMethod.POST)
     public String addProject4(Model model, HttpServletRequest request) {
         model.addAttribute("controllerName", "ProjectController.addProject4");
-        model.addAttribute("params", "");
+        model.addAttribute("params", request.getParameterMap());
         return "add";
     }
+
+    @RequestMapping(value= "/find/", method = RequestMethod.GET)
+    public String findProjects(Model model) {
+        model.addAttribute("projects", service.getProjects());
+        return "projects";
+    }
+
 }

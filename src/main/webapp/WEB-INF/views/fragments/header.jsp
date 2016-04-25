@@ -18,7 +18,7 @@
 
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="<spring:url value="/servlet01/project/"/>">Add</a></li>
-                    <%--<li><a href="#">Find</a></li>--%>
+                    <li><a href="<spring:url value="/servlet01/project/find/"/>">Projects</a></li>
                 </ul>
 
             </li>
