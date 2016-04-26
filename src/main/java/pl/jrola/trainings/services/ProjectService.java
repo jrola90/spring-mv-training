@@ -1,9 +1,10 @@
 package pl.jrola.trainings.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.jrola.trainings.daos.ProjectsDao;
 import pl.jrola.trainings.dtos.Project;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,36 +13,24 @@ import java.util.List;
 @Service
 public class ProjectService {
 
+    @Autowired
+    private ProjectsDao dao;
+
     public List<Project> getProjects() {
-        List<Project> LIST = new ArrayList<Project>();
-
-        Project p1 = new Project(1L, "NAME_1");
-        LIST.add(p1);
-
-        Project p2 = new Project(2L, "NAME_2");
-        LIST.add(p2);
-
-        return LIST;
+        return dao.getProjects();
     }
 
     public Project find(Long id) {
 
-        List<Project> LIST = new ArrayList<Project>();
+        Project project = null;
+        List<Project> projects = dao.getProjects();
 
-        Project p1 = new Project(1L, "NAME_1");
-        LIST.add(p1);
-
-        Project p2 = new Project(2L, "NAME_2");
-        LIST.add(p2);
-
-        Project ret = null;
-
-        for (Project item : LIST) {
+        for (Project item : projects) {
             if (item.getId() == id) {
-                ret = item;
+                project = item;
             }
         }
 
-        return ret;
+        return project;
     }
 }

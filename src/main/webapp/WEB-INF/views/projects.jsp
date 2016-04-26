@@ -18,15 +18,29 @@
 </head>
 <body>
 
-<div class="panel panel-default">
-    <div class="panel-heading">Projects</div>
+<jsp:include page="fragments/header.jsp"/>
 
-    <c:forEach items="${projects}" var="project">
-    <div class="panel-body">
-            ${project.id} - ${project.name} - <a href="<spring:url value="/servlet01/project/details/${project.id}" />">CLICK TO SEE DETAILS</a>
-    </div>
-    </c:forEach>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
 
+        <c:forEach items="${projects}" var="project">
+            <tr>
+                <td>${project.id}</td>
+                <td>${project.name}</td>
+                <td><a href="<spring:url value="/servlet01/project/details/${project.id}" />"><span class="badge">Details</span></a></td>
+            </tr>
+        </c:forEach>
+
+        </tbody>
+    </table>
 </div>
 
 </body>

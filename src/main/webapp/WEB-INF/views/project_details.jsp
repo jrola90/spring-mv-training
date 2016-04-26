@@ -18,11 +18,14 @@
 </head>
 <body>
 
+<jsp:include page="fragments/header.jsp"/>
+
 <div class="panel panel-default">
   <div class="panel-heading">Project Details</div>
 
     <div class="panel-body">
-        ${project.id} | ${project.name}
+        <b>Project id:</b> ${project.id}<br />
+        <b>Project name:</b> ${project.name}
     </div>
 
 </div>
