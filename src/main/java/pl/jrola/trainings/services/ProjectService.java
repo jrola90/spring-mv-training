@@ -13,15 +13,35 @@ import java.util.List;
 public class ProjectService {
 
     public List<Project> getProjects() {
-
-        List<Project> list = new ArrayList<Project>();
+        List<Project> LIST = new ArrayList<Project>();
 
         Project p1 = new Project(1L, "NAME_1");
-        list.add(p1);
+        LIST.add(p1);
 
         Project p2 = new Project(2L, "NAME_2");
-        list.add(p2);
+        LIST.add(p2);
 
-        return list;
+        return LIST;
+    }
+
+    public Project find(Long id) {
+
+        List<Project> LIST = new ArrayList<Project>();
+
+        Project p1 = new Project(1L, "NAME_1");
+        LIST.add(p1);
+
+        Project p2 = new Project(2L, "NAME_2");
+        LIST.add(p2);
+
+        Project ret = null;
+
+        for (Project item : LIST) {
+            if (item.getId() == id) {
+                ret = item;
+            }
+        }
+
+        return ret;
     }
 }

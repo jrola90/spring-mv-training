@@ -23,7 +23,7 @@
 
     <c:forEach items="${projects}" var="project">
     <div class="panel-body">
-            ${project.id} - ${project.name}
+            ${project.id} - ${project.name} - <a href="<spring:url value="/servlet01/project/details/${project.id}" />">CLICK TO SEE DETAILS</a>
     </div>
     </c:forEach>
 
