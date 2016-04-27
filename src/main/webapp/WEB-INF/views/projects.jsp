@@ -26,6 +26,7 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>Description</th>
             <th>Details</th>
         </tr>
         </thead>
@@ -35,6 +36,7 @@
             <tr>
                 <td>${project.id}</td>
                 <td>${project.name}</td>
+                <td>${project.desc}</td>
                 <td><a href="<spring:url value="/servlet01/project/details/${project.id}" />"><span class="badge">Details</span></a></td>
             </tr>
         </c:forEach>

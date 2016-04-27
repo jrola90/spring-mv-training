@@ -17,8 +17,9 @@
                    aria-expanded="false">Projects <span class="caret"></span></a>
 
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="<spring:url value="/servlet01/project/"/>">Add</a></li>
-                    <li><a href="<spring:url value="/servlet01/project/find/"/>">Projects</a></li>
+                    <li><a href="<spring:url value="/servlet01/project/add/"/>">Add Project</a></li>
+                    <li><a href="<spring:url value="/servlet01/project/list/"/>">Projects</a></li>
+                    <li><a href="<spring:url value="/servlet01/test/"/>">Test</a></li>
                 </ul>
 
             </li>

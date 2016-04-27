@@ -24,11 +24,13 @@
   <div class="panel-heading">Project Details</div>
 
     <div class="panel-body">
-        <b>Project id:</b> ${project.id}<br />
-        <b>Project name:</b> ${project.name}
+        <b>Project id: </b> ${project.id}<br />
+        <b>Project name: </b> ${project.name}<br />
+        <b>Description: </b> ${project.desc}
     </div>
 
 </div>
+<a href="<spring:url value="/servlet01/project/list/"/>">Back to projects</a>
 
 </body>
 </html>
