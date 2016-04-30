@@ -24,11 +24,12 @@
 
 <div class="container">
 
-  <spring:url value="/servlet01/project/add/" var="formUrl"/>
+  <spring:url value="/servlet01/project/add2/" var="formUrl"/>
 
   <form:form method="post" action="${formUrl}" modelAttribute="project">
-    <input type="text" value="${project.name}" class="form-control" placeholder="Name" name="name">
-    <input type="text" value="${project.desc}" class="form-control" placeholder="Description" name="desc">
+
+    <form:input path="name" cssClass="form-control" />
+    <form:input path="desc" cssClass="form-control" />
     <button type="submit" class="btn btn-default btn-lg" >Add</button>
   </form:form>
 

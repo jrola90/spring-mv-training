@@ -37,17 +37,25 @@ public class ProjectController {
         return "add";
     }
 
-    @RequestMapping(value="/add2/", method = RequestMethod.GET)
-    public String addProjectView2(Model model) {
-        model.addAttribute("project", new Project(1L, "Test name", "Test desc"));
-        return "add2";
-    }
 
     @RequestMapping(value="/add/", method = RequestMethod.POST)
     public String addProject(Model model, @ModelAttribute Project project) {
         service.addProject(project);
         model.addAttribute("result", "Project was added successfully");
         return "add";
+    }
+
+    @RequestMapping(value="/add2/", method = RequestMethod.GET)
+    public String addProjectView2(Model model) {
+        model.addAttribute("project", new Project(1L, "Test name", "Test desc"));
+        return "add2";
+    }
+
+    @RequestMapping(value="/add2/", method = RequestMethod.POST)
+    public String addProject2(Model model, @ModelAttribute Project project) {
+        service.addProject(project);
+        model.addAttribute("result", "Project was added successfully");
+        return "add2";
     }
 
 }
