@@ -10,22 +10,23 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
-  <title>Projects</title>
-  <link rel="stylesheet" href="<spring:url value="/resources/styles/styles.css" />" type="text/css"/>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <title>Projects</title>
+    <link rel="stylesheet" href="<spring:url value="/resources/styles/styles.css" />" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
 <body>
 
 <jsp:include page="fragments/header.jsp"/>
 
 <div class="panel panel-default">
-  <div class="panel-heading">Project Details</div>
+    <div class="panel-heading">Project Details</div>
 
     <div class="panel-body">
-        <b>Project id: </b> ${project.id}<br />
-        <b>Project name: </b> ${project.name}<br />
+        <b>Project id: </b> ${project.id}<br/>
+        <b>Project name: </b> ${project.name}<br/>
+        <b>People Involved: </b> ${project.peopleInvolved}<br/>
         <b>Description: </b> ${project.desc}
     </div>
 

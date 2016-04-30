@@ -8,6 +8,7 @@ public class Project {
     private Long id;
     private String name;
     private String desc;
+    private Integer peopleInvolved;
 
     public Project() {
     }
@@ -42,12 +43,21 @@ public class Project {
         this.desc = desc;
     }
 
+    public Integer getPeopleInvolved() {
+        return peopleInvolved;
+    }
+
+    public void setPeopleInvolved(Integer peopleInvolved) {
+        this.peopleInvolved = peopleInvolved;
+    }
+
     @Override
     public String toString() {
         return "Project{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", desc='" + desc + '\'' +
+                ", peopleInvolved=" + peopleInvolved +
                 '}';
     }
 }

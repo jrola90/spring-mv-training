@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import pl.jrola.trainings.dtos.Project;
 import pl.jrola.trainings.services.ProjectService;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * Created by JrQ- on 2016-04-17.
  */
@@ -47,7 +51,8 @@ public class ProjectController {
 
     @RequestMapping(value="/add2/", method = RequestMethod.GET)
     public String addProjectView2(Model model) {
-        model.addAttribute("project", new Project(1L, "Test name", "Test desc"));
+        initView(model);
+        model.addAttribute("project", new Project());
         return "add2";
     }
 
@@ -55,7 +60,17 @@ public class ProjectController {
     public String addProject2(Model model, @ModelAttribute Project project) {
         service.addProject(project);
         model.addAttribute("result", "Project was added successfully");
+
+        initView(model);
         return "add2";
+    }
+
+    private static final List<Integer> OPTIONS = new LinkedList<Integer>(Arrays.asList(new Integer[]{
+            1, 2, 3, 4}));
+    private void initView(Model model) {
+        if (model != null) {
+            model.addAttribute("options", OPTIONS);
+        }
     }
 
 }

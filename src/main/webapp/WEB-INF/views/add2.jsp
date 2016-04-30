@@ -28,8 +28,19 @@
 
   <form:form method="post" action="${formUrl}" modelAttribute="project">
 
-    <form:input path="name" cssClass="form-control" />
-    <form:input path="desc" cssClass="form-control" />
+    <div class="form-group">
+      <label for="project-name">Name</label>
+      <form:input id="project-name" path="name" cssClass="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="project-desc">Name</label>
+      <form:input id="project-desc" path="desc" cssClass="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="project-people-involved">People Involved</label>
+      <form:select id="project-people-involved" path="peopleInvolved" items="${options}" cssClass="form-control"/>
+    </div>
+
     <button type="submit" class="btn btn-default btn-lg" >Add</button>
   </form:form>
 

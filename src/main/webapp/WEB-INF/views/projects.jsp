@@ -26,6 +26,7 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>People Involved</th>
             <th>Description</th>
             <th>Details</th>
         </tr>
@@ -36,6 +37,7 @@
             <tr>
                 <td>${project.id}</td>
                 <td>${project.name}</td>
+                <td>${project.peopleInvolved}</td>
                 <td>${project.desc}</td>
                 <td><a href="<spring:url value="/servlet01/project/details/${project.id}" />"><span class="badge">Details</span></a></td>
             </tr>
