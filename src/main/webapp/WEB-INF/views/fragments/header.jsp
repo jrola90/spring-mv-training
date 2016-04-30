@@ -3,7 +3,7 @@
     <div class="container-fluid">
 
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Project Management</a>
+            <a class="navbar-brand" href="<spring:url value="/servlet01/home/"/>">Project Management</a>
         </div>
 
         <ul class="nav navbar-nav">

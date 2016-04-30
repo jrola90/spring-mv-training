@@ -26,8 +26,19 @@
     <div class="panel-body">
         <b>Project id: </b> ${project.id}<br/>
         <b>Project name: </b> ${project.name}<br/>
-        <b>People Involved: </b> ${project.peopleInvolved}<br/>
         <b>Description: </b> ${project.desc}
+        <b>People Involved: </b> ${project.peopleInvolved}<br/>
+        <b>Is Finished: </b>
+        <c:choose>
+            <c:when test="${project.finished}">
+                Yes
+            </c:when>
+            <c:otherwise>
+                No
+            </c:otherwise>
+        </c:choose>
+        <br/>
+        <b>Indicators: </b>${project.indicators}
     </div>
 
 </div>

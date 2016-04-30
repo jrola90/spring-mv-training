@@ -27,6 +27,8 @@
             <th>ID</th>
             <th>Name</th>
             <th>People Involved</th>
+            <th>Finished</th>
+            <th>Indicators</th>
             <th>Description</th>
             <th>Details</th>
         </tr>
@@ -38,6 +40,21 @@
                 <td>${project.id}</td>
                 <td>${project.name}</td>
                 <td>${project.peopleInvolved}</td>
+                <td>
+                    <c:choose>
+                        <c:when test="${project.finished}">
+                            Yes
+                        </c:when>
+                        <c:otherwise>
+                            No
+                        </c:otherwise>
+                    </c:choose>
+                </td>
+                <td>
+                    <c:forEach items="${project.indicators}" var="indicator">
+                        - ${indicator}
+                    </c:forEach>
+                </td>
                 <td>${project.desc}</td>
                 <td><a href="<spring:url value="/servlet01/project/details/${project.id}" />"><span class="badge">Details</span></a></td>
             </tr>

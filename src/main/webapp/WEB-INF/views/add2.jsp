@@ -32,16 +32,28 @@
       <label for="project-name">Name</label>
       <form:input id="project-name" path="name" cssClass="form-control" />
     </div>
+
     <div class="form-group">
-      <label for="project-desc">Name</label>
-      <form:input id="project-desc" path="desc" cssClass="form-control" />
-    </div>
-    <div class="form-group">
-      <label for="project-people-involved">People Involved</label>
-      <form:select id="project-people-involved" path="peopleInvolved" items="${options}" cssClass="form-control"/>
+      <label for="project-desc">Description</label>
+      <form:textarea id="project-desc" path="desc" cssClass="form-control" rows="10" />
     </div>
 
-    <button type="submit" class="btn btn-default btn-lg" >Add</button>
+    <div class="form-group">
+      <label for="project-people-involved">People Involved</label>
+      <form:select id="project-people-involved" path="peopleInvolved" items="${peopleInvolvedOptions}" cssClass="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <label for="project-finished">Is project finished?</label>
+      <form:checkbox id="project-finished" path="finished"/>
+    </div>
+
+    <div class="form-group">
+      <label for="project-indicators">Indicators</label>
+      <form:radiobuttons id="project-indicators" path="indicators" items="${indicatorsOptions}" />
+    </div>
+
+    <button type="submit" class="btn btn-default btn-lg">Add</button>
   </form:form>
 
   <c:if test="${result != null}">

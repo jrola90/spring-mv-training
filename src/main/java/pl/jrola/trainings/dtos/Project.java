@@ -1,5 +1,7 @@
 package pl.jrola.trainings.dtos;
 
+import java.util.List;
+
 /**
  * Created by JrQ- on 2016-04-25.
  */
@@ -9,6 +11,8 @@ public class Project {
     private String name;
     private String desc;
     private Integer peopleInvolved;
+    private Boolean finished;
+    private List<String> indicators;
 
     public Project() {
     }
@@ -51,6 +55,22 @@ public class Project {
         this.peopleInvolved = peopleInvolved;
     }
 
+    public Boolean getFinished() {
+        return finished;
+    }
+
+    public void setFinished(Boolean finished) {
+        this.finished = finished;
+    }
+
+    public List<String> getIndicators() {
+        return indicators;
+    }
+
+    public void setIndicators(List<String> indicators) {
+        this.indicators = indicators;
+    }
+
     @Override
     public String toString() {
         return "Project{" +
@@ -58,6 +78,8 @@ public class Project {
                 ", name='" + name + '\'' +
                 ", desc='" + desc + '\'' +
                 ", peopleInvolved=" + peopleInvolved +
+                ", finished=" + finished +
+                ", indicators=" + indicators +
                 '}';
     }
 }
