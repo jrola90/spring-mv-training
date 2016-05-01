@@ -51,8 +51,6 @@ public class ProjectController {
 
     @RequestMapping(value = "/add2/", method = RequestMethod.GET)
     public String addProjectView2(Model model) {
-        initView(model);
-        model.addAttribute("project", new Project());
         return "add2";
     }
 
@@ -60,19 +58,25 @@ public class ProjectController {
     public String addProject2(Model model, @ModelAttribute Project project) {
         service.addProject(project);
         model.addAttribute("result", "Project was added successfully");
-        initView(model);
+        model.addAttribute("project", new Project());
         return "add2";
     }
 
-    private static final List<Integer> PEOPLE_INVOLVED = new LinkedList<Integer>(Arrays.asList(new Integer[]{
-            1, 2, 3, 4}));
-    private static final List<String> INDICATORS_OPTIONS = new LinkedList<String>(Arrays.asList(new String[]{"AVP", "VP", "SVP"}));
-    private void initView(Model model) {
-        if (model != null) {
-            model.addAttribute("project", new Project());
-            model.addAttribute("peopleInvolvedOptions", PEOPLE_INVOLVED);
-            model.addAttribute("indicatorsOptions", INDICATORS_OPTIONS);
-        }
+    @ModelAttribute("indicatorsOptions")
+    public List<String> indicatorsOptions() {
+        return new LinkedList<String>(Arrays.asList(new String[]{"AVP", "VP", "SVP"}));
     }
+
+    @ModelAttribute("project")
+    public Project project() {
+        return new Project();
+    }
+
+    @ModelAttribute("peopleInvolvedOptions")
+    public List<Integer> peopleInvolvedOptions() {
+        return new LinkedList<Integer>(Arrays.asList(new Integer[]{
+                1, 2, 3, 4}));
+    }
+
 
 }
