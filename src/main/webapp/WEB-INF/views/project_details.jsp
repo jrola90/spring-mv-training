@@ -38,7 +38,8 @@
             </c:otherwise>
         </c:choose>
         <br/>
-        <b>Indicators: </b>${project.indicators}
+        <b>Indicators: </b>${project.indicators}<br/>
+        <b>Project manager: </b>${project.projectManager.name} ${project.projectManager.surname}
     </div>
 
 </div>

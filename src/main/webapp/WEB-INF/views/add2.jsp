@@ -53,6 +53,16 @@
       <form:radiobuttons id="project-indicators" path="indicators" items="${indicatorsOptions}" />
     </div>
 
+    <div class="form-group">
+      <label for="project-manager-name">Project Manager Name</label>
+      <form:input id="project-manager-name" path="projectManager.name" cssClass="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="project-manager-surname">Project Manager Surname</label>
+      <form:input id="project-manager-surname" path="projectManager.surname" cssClass="form-control" />
+    </div>
+
     <button type="submit" class="btn btn-default btn-lg">Add</button>
   </form:form>
 

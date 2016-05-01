@@ -30,6 +30,7 @@
             <th>Finished</th>
             <th>Indicators</th>
             <th>Description</th>
+            <th>Project Manager</th>
             <th>Details</th>
         </tr>
         </thead>
@@ -56,7 +57,9 @@
                     </c:forEach>
                 </td>
                 <td>${project.desc}</td>
-                <td><a href="<spring:url value="/servlet01/project/details/${project.id}" />"><span class="badge">Details</span></a></td>
+                <td>${project.projectManager.name} ${project.projectManager.surname}</td>
+                <td><a href="<spring:url value="/servlet01/project/details/${project.id}" />"><span class="badge">Details</span></a>
+                </td>
             </tr>
         </c:forEach>
 

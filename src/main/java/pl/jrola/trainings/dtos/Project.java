@@ -13,6 +13,7 @@ public class Project {
     private Integer peopleInvolved;
     private Boolean finished;
     private List<String> indicators;
+    private Person projectManager;
 
     public Project() {
     }
@@ -71,6 +72,14 @@ public class Project {
         this.indicators = indicators;
     }
 
+    public Person getProjectManager() {
+        return projectManager;
+    }
+
+    public void setProjectManager(Person projectManager) {
+        this.projectManager = projectManager;
+    }
+
     @Override
     public String toString() {
         return "Project{" +
@@ -80,6 +89,7 @@ public class Project {
                 ", peopleInvolved=" + peopleInvolved +
                 ", finished=" + finished +
                 ", indicators=" + indicators +
+                ", projectManager=" + projectManager +
                 '}';
     }
 }

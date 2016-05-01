@@ -60,7 +60,6 @@ public class ProjectController {
     public String addProject2(Model model, @ModelAttribute Project project) {
         service.addProject(project);
         model.addAttribute("result", "Project was added successfully");
-
         initView(model);
         return "add2";
     }
