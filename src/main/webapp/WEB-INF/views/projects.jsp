@@ -31,35 +31,42 @@
             <th>Indicators</th>
             <th>Description</th>
             <th>Project Manager</th>
+            <th>Points of Contact</th>
             <th>Details</th>
         </tr>
         </thead>
         <tbody>
 
         <c:forEach items="${projects}" var="project">
-            <tr>
-                <td>${project.id}</td>
-                <td>${project.name}</td>
-                <td>${project.peopleInvolved}</td>
-                <td>
-                    <c:choose>
-                        <c:when test="${project.finished}">
-                            Yes
-                        </c:when>
-                        <c:otherwise>
-                            No
-                        </c:otherwise>
-                    </c:choose>
-                </td>
-                <td>
-                    <c:forEach items="${project.indicators}" var="indicator">
-                        - ${indicator}
-                    </c:forEach>
-                </td>
-                <td>${project.desc}</td>
-                <td>${project.projectManager.name} ${project.projectManager.surname}</td>
-                <td><a href="<spring:url value="/servlet01/project/details/${project.id}" />"><span class="badge">Details</span></a>
-                </td>
+            <br>
+            <td>${project.id}</td>
+            <td>${project.name}</td>
+            <td>${project.peopleInvolved}</td>
+            <td>
+                <c:choose>
+                    <c:when test="${project.finished}">
+                        Yes
+                    </c:when>
+                    <c:otherwise>
+                        No
+                    </c:otherwise>
+                </c:choose>
+            </td>
+            <td>
+            <c:forEach items="${project.indicators}" var="indicator">
+                ${indicator} </br>
+            </c:forEach>
+            </td>
+            <td>${project.desc}</td>
+            <td>${project.projectManager.name} ${project.projectManager.surname}</td>
+            <td>
+                <c:forEach items="${project.pointsOfContact}" var="poc">
+                    ${poc} </br>
+                </c:forEach>
+            </td>
+            <td><a href="<spring:url value="/servlet01/project/details/${project.id}" />"><span
+                    class="badge">Details</span></a>
+            </td>
             </tr>
         </c:forEach>
 

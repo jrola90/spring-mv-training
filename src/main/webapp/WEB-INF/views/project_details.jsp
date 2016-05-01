@@ -39,7 +39,8 @@
         </c:choose>
         <br/>
         <b>Indicators: </b>${project.indicators}<br/>
-        <b>Project manager: </b>${project.projectManager.name} ${project.projectManager.surname}
+        <b>Project manager: </b>${project.projectManager.name} ${project.projectManager.surname}<br/>
+        <b>Points of Contact: </b>${project.pointsOfContact}
     </div>
 
 </div>

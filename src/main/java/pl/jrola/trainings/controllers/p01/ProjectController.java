@@ -69,6 +69,7 @@ public class ProjectController {
     private static final List<String> INDICATORS_OPTIONS = new LinkedList<String>(Arrays.asList(new String[]{"AVP", "VP", "SVP"}));
     private void initView(Model model) {
         if (model != null) {
+            model.addAttribute("project", new Project());
             model.addAttribute("peopleInvolvedOptions", PEOPLE_INVOLVED);
             model.addAttribute("indicatorsOptions", INDICATORS_OPTIONS);
         }

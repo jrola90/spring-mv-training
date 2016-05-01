@@ -63,6 +63,21 @@
       <form:input id="project-manager-surname" path="projectManager.surname" cssClass="form-control" />
     </div>
 
+    <div class="form-group">
+      <label for="project-manager-poc1">POC1</label>
+      <form:input id="project-manager-poc1" path="pointsOfContact[0]" cssClass="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="project-manager-poc2">POC2</label>
+      <form:input id="project-manager-poc2" path="pointsOfContact[1]" cssClass="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="project-manager-poc3">POC3</label>
+      <form:input id="project-manager-poc3" path="pointsOfContact[2]" cssClass="form-control" />
+    </div>
+
     <button type="submit" class="btn btn-default btn-lg">Add</button>
   </form:form>
 

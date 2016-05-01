@@ -14,6 +14,7 @@ public class Project {
     private Boolean finished;
     private List<String> indicators;
     private Person projectManager;
+    private List<String> pointsOfContact;
 
     public Project() {
     }
@@ -80,6 +81,14 @@ public class Project {
         this.projectManager = projectManager;
     }
 
+    public List<String> getPointsOfContact() {
+        return pointsOfContact;
+    }
+
+    public void setPointsOfContact(List<String> pointsOfContact) {
+        this.pointsOfContact = pointsOfContact;
+    }
+
     @Override
     public String toString() {
         return "Project{" +
@@ -90,6 +99,7 @@ public class Project {
                 ", finished=" + finished +
                 ", indicators=" + indicators +
                 ", projectManager=" + projectManager +
+                ", pointsOfContact=" + pointsOfContact +
                 '}';
     }
 }
