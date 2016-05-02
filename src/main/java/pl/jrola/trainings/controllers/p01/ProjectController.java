@@ -3,10 +3,7 @@ package pl.jrola.trainings.controllers.p01;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import pl.jrola.trainings.dtos.Project;
 import pl.jrola.trainings.services.ProjectService;
 
@@ -19,6 +16,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping(value = "project")
+@SessionAttributes("project")
 public class ProjectController {
 
     @Autowired
@@ -41,7 +39,6 @@ public class ProjectController {
         return "add";
     }
 
-
     @RequestMapping(value = "/add/", method = RequestMethod.POST)
     public String addProject(Model model, @ModelAttribute Project project) {
         service.addProject(project);
@@ -51,15 +48,26 @@ public class ProjectController {
 
     @RequestMapping(value = "/add2/", method = RequestMethod.GET)
     public String addProjectView2(Model model) {
+        model.addAttribute("project", new Project());
         return "add2";
     }
 
     @RequestMapping(value = "/add2/", method = RequestMethod.POST)
-    public String addProject2(Model model, @ModelAttribute Project project) {
+    public String addProject2(@ModelAttribute Project project) {
+        System.out.println("You are trying to add item: " + project);
+        return "review";
+    }
+
+    @RequestMapping(value = "/review/", method = RequestMethod.GET)
+    public String review(@ModelAttribute Project project) {
+        return "review";
+    }
+
+    @RequestMapping(value = "/confirm/", method = RequestMethod.POST)
+    public String confirm(Model model, @ModelAttribute Project project) {
         service.addProject(project);
-        model.addAttribute("result", "Project was added successfully");
         model.addAttribute("project", new Project());
-        return "add2";
+        return "redirect:/servlet01/project/details/" + project.getId();
     }
 
     @ModelAttribute("indicatorsOptions")
@@ -67,16 +75,10 @@ public class ProjectController {
         return new LinkedList<String>(Arrays.asList(new String[]{"AVP", "VP", "SVP"}));
     }
 
-    @ModelAttribute("project")
-    public Project project() {
-        return new Project();
-    }
-
     @ModelAttribute("peopleInvolvedOptions")
     public List<Integer> peopleInvolvedOptions() {
         return new LinkedList<Integer>(Arrays.asList(new Integer[]{
                 1, 2, 3, 4}));
     }
-
 
 }
