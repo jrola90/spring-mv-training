@@ -70,6 +70,12 @@ public class ProjectController {
         return "redirect:/servlet01/project/details/" + project.getId();
     }
 
+    @RequestMapping(value="/request/", method = RequestMethod.POST)
+    @ResponseBody
+    public String request() {
+        return "Request has been sent";
+    }
+
     @ModelAttribute("indicatorsOptions")
     public List<String> indicatorsOptions() {
         return new LinkedList<String>(Arrays.asList(new String[]{"AVP", "VP", "SVP"}));

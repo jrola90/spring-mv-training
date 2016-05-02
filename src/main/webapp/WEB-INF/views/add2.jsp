@@ -17,12 +17,15 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script>var ctx = "${pageContext.request.contextPath}"</script>
+  <script src="<spring:url value="/resources/js/sendRequest.js"/>"></script>
 </head>
 <body>
 
 <jsp:include page="fragments/header.jsp"/>
 
 <div class="container">
+
 
   <spring:url value="/servlet01/project/add2/" var="formUrl"/>
 
@@ -50,7 +53,8 @@
 
     <div class="form-group">
       <label for="project-indicators">Indicators</label>
-      <form:radiobuttons id="project-indicators" path="indicators" items="${indicatorsOptions}" />
+      <form:radiobuttons id="project-indicators" path="indicators" items="${indicatorsOptions}" /> |
+      <a id="request-link" href="<spring:url value="/servlet01/project/request/" />">Send Request</a>
     </div>
 
     <div class="form-group">
