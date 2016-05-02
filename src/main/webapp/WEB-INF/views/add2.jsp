@@ -54,7 +54,7 @@
     <div class="form-group">
       <label for="project-indicators">Indicators</label>
       <form:radiobuttons id="project-indicators" path="indicators" items="${indicatorsOptions}" /> |
-      <a id="request-link" href="<spring:url value="/servlet01/project/request/" />">Send Request</a>
+      <a id="request-link" href="<spring:url value="/servlet01/permission/request/" />">Send Request</a>
     </div>
 
     <div class="form-group">

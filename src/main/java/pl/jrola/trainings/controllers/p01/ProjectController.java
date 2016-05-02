@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import pl.jrola.trainings.dtos.Project;
 import pl.jrola.trainings.services.ProjectService;
 
@@ -64,16 +65,10 @@ public class ProjectController {
     }
 
     @RequestMapping(value = "/confirm/", method = RequestMethod.POST)
-    public String confirm(Model model, @ModelAttribute Project project) {
+    public String confirm(Model model, @ModelAttribute Project project, SessionStatus status) {
         service.addProject(project);
-        model.addAttribute("project", new Project());
+        status.setComplete();
         return "redirect:/servlet01/project/details/" + project.getId();
-    }
-
-    @RequestMapping(value="/request/", method = RequestMethod.POST)
-    @ResponseBody
-    public String request() {
-        return "Request has been sent";
     }
 
     @ModelAttribute("indicatorsOptions")
