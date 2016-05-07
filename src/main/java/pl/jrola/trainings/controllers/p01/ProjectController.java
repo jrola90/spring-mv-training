@@ -3,11 +3,16 @@ package pl.jrola.trainings.controllers.p01;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import pl.jrola.trainings.dtos.Project;
 import pl.jrola.trainings.services.ProjectService;
+import pl.jrola.trainings.validators.ProjectValidator;
 
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -60,7 +65,13 @@ public class ProjectController {
     }
 
     @RequestMapping(value = "/review/", method = RequestMethod.GET)
-    public String review(@ModelAttribute Project project) {
+    public String review(Model model, @Valid @ModelAttribute Project project, Errors errors) {
+
+        if (errors.hasErrors()) {
+            List<ObjectError> objectErrors = errors.getAllErrors();
+            model.addAttribute("errors", objectErrors);
+        }
+
         return "review";
     }
 
@@ -80,6 +91,11 @@ public class ProjectController {
     public List<Integer> peopleInvolvedOptions() {
         return new LinkedList<Integer>(Arrays.asList(new Integer[]{
                 1, 2, 3, 4}));
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder){
+        binder.setValidator(new ProjectValidator());
     }
 
 }

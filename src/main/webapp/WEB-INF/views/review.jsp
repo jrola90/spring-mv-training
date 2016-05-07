@@ -21,6 +21,8 @@
 
 <jsp:include page="fragments/header.jsp"/>
 
+Errors: ${errors}
+
 <div class="panel panel-default">
   <div class="panel-heading">Project Details</div>
 
@@ -50,8 +52,8 @@
   </form:form>
 
 </div>
-<a href="<spring:url value="/servlet01/project/list/"/>">Back to projects</a>
 
+<a href="<spring:url value="/servlet01/project/list/"/>">Back to projects</a>
 
 </body>
 </html>
