@@ -3,6 +3,7 @@ package pl.jrola.trainings.controllers.p01;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
@@ -13,6 +14,7 @@ import pl.jrola.trainings.services.ProjectService;
 import pl.jrola.trainings.validators.ProjectValidator;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -27,6 +29,9 @@ public class ProjectController {
 
     @Autowired
     private ProjectService service;
+
+    @Autowired
+    private ProjectValidator validator;
 
     @RequestMapping(value = "/list/", method = RequestMethod.GET)
     public String findProjects(Model model) {
@@ -59,19 +64,19 @@ public class ProjectController {
     }
 
     @RequestMapping(value = "/add2/", method = RequestMethod.POST)
-    public String addProject2(@ModelAttribute Project project) {
+    public String addProject2(Model model, @Valid @ModelAttribute Project project, Errors errors) {
         System.out.println("You are trying to add item: " + project);
-        return "review";
-    }
-
-    @RequestMapping(value = "/review/", method = RequestMethod.GET)
-    public String review(Model model, @Valid @ModelAttribute Project project, Errors errors) {
 
         if (errors.hasErrors()) {
             List<ObjectError> objectErrors = errors.getAllErrors();
             model.addAttribute("errors", objectErrors);
         }
 
+        return "review";
+    }
+
+    @RequestMapping(value = "/review/", method = RequestMethod.GET)
+    public String review(@ModelAttribute Project project) {
         return "review";
     }
 
@@ -91,11 +96,6 @@ public class ProjectController {
     public List<Integer> peopleInvolvedOptions() {
         return new LinkedList<Integer>(Arrays.asList(new Integer[]{
                 1, 2, 3, 4}));
-    }
-
-    @InitBinder
-    public void initBinder(WebDataBinder binder){
-        binder.setValidator(new ProjectValidator());
     }
 
 }

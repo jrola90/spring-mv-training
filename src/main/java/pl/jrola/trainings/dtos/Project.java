@@ -1,5 +1,7 @@
 package pl.jrola.trainings.dtos;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import java.util.List;
 
 /**
@@ -8,8 +10,13 @@ import java.util.List;
 public class Project {
 
     private Long id;
+
+    @NotBlank(message = "Name is mandatory")
     private String name;
+
+    @NotBlank(message = "Description is mandatory")
     private String desc;
+
     private Integer peopleInvolved;
     private Boolean finished;
     private List<String> indicators;
