@@ -3,18 +3,14 @@ package pl.jrola.trainings.controllers.p01;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import pl.jrola.trainings.dtos.Project;
 import pl.jrola.trainings.services.ProjectService;
-import pl.jrola.trainings.validators.ProjectValidator;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -30,9 +26,6 @@ public class ProjectController {
     @Autowired
     private ProjectService service;
 
-    @Autowired
-    private ProjectValidator validator;
-
     @RequestMapping(value = "/list/", method = RequestMethod.GET)
     public String findProjects(Model model) {
         model.addAttribute("projects", service.getProjects());
@@ -40,8 +33,11 @@ public class ProjectController {
     }
 
     @RequestMapping(value = "/details/{projectId}", method = RequestMethod.GET)
-    public String showProjectDetails(Model model, @PathVariable Long projectId) {
+    public String showProjectDetails(Model model, @PathVariable Long projectId, SessionStatus sessionStatus) {
         model.addAttribute("project", service.find(projectId));
+
+        sessionStatus.setComplete();
+
         return "project_details";
     }
 
@@ -59,7 +55,6 @@ public class ProjectController {
 
     @RequestMapping(value = "/add2/", method = RequestMethod.GET)
     public String addProjectView2(Model model) {
-        model.addAttribute("project", new Project());
         return "add2";
     }
 
@@ -85,6 +80,11 @@ public class ProjectController {
         service.addProject(project);
         status.setComplete();
         return "redirect:/servlet01/project/details/" + project.getId();
+    }
+
+    @ModelAttribute("project")
+    public Project getProject() {
+        return new Project();
     }
 
     @ModelAttribute("indicatorsOptions")
