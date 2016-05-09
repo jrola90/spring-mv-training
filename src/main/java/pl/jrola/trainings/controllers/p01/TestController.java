@@ -15,9 +15,18 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping(value = "/test")
 public class TestController {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/methods", method = RequestMethod.GET)
     public String addView() {
         return "test";
+    }
+
+    @RequestMapping(value = "/exception", method = RequestMethod.GET)
+    public String exceptionTest() {
+
+        if (true)
+            throw new RuntimeException();
+
+        return "it does not matter! : )";
     }
 
     @RequestMapping(value = "/go", method = RequestMethod.GET)
