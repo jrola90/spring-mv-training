@@ -27,7 +27,7 @@
 <div class="container">
 
 
-    <spring:url value="/servlet01/project/add2/" var="formUrl"/>
+    <spring:url value="/servlet01/project/review/" var="formUrl"/>
 
     <form:form method="post" action="${formUrl}" modelAttribute="project">
 

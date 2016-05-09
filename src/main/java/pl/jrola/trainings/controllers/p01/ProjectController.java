@@ -35,11 +35,11 @@ public class ProjectController {
     @RequestMapping(value = "/details/{projectId}", method = RequestMethod.GET)
     public String showProjectDetails(Model model, @PathVariable Long projectId, SessionStatus sessionStatus) {
         model.addAttribute("project", service.find(projectId));
-
         sessionStatus.setComplete();
-
         return "project_details";
     }
+
+    /*
 
     @RequestMapping(value = "/add/", method = RequestMethod.GET)
     public String addProjectView() {
@@ -53,30 +53,21 @@ public class ProjectController {
         return "add";
     }
 
+    */
+
     @RequestMapping(value = "/add2/", method = RequestMethod.GET)
-    public String addProjectView2(Model model) {
+    public String addProjectView2() {
         return "add2";
     }
 
-    @RequestMapping(value = "/add2/", method = RequestMethod.POST)
-    public String addProject2(Model model, @Valid @ModelAttribute Project project, Errors errors) {
+    @RequestMapping(value = "/review/", method = RequestMethod.POST)
+    public String review(@Valid @ModelAttribute Project project, Errors errors) {
         System.out.println("You are trying to add item: " + project);
-
-        if (errors.hasErrors()) {
-            List<ObjectError> objectErrors = errors.getAllErrors();
-            model.addAttribute("errors", objectErrors);
-        }
-
-        return "review";
-    }
-
-    @RequestMapping(value = "/review/", method = RequestMethod.GET)
-    public String review(@ModelAttribute Project project) {
         return "review";
     }
 
     @RequestMapping(value = "/confirm/", method = RequestMethod.POST)
-    public String confirm(Model model, @ModelAttribute Project project, SessionStatus status) {
+    public String confirm(@ModelAttribute Project project, SessionStatus status) {
         service.addProject(project);
         status.setComplete();
         return "redirect:/servlet01/project/details/" + project.getId();

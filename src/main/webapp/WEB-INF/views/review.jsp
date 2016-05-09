@@ -27,19 +27,18 @@
 
     <div class="panel-body">
 
-        <c:if test="${errors != null}">
+        <spring:hasBindErrors name="project">
             <div class="alert alert-danger" role="alert">
-                <c:forEach items="${errors}" var="error">
-                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                    <span class="sr-only">Error:</span>
-                    <span style="color: red;">${error.defaultMessage}</span> </br>
+                <c:forEach var="error" items="${errors.allErrors}">
+                    <spring:message message="${error}"/>
+                    <br/>
                 </c:forEach>
             </div>
-        </c:if>
+        </spring:hasBindErrors>
 
         <b>Project id: </b> ${project.id}<br/>
         <b>Project name: </b> ${project.name}<br/>
-        <b>Description: </b> ${project.desc}<br />
+        <b>Description: </b> ${project.desc}<br/>
         <b>People Involved: </b> ${project.peopleInvolved}<br/>
         <b>Is Finished: </b>
         <c:choose>
@@ -57,7 +56,8 @@
 
         <div class="alert alert-info" role="alert">
 
-            <a href="<spring:url value="/servlet01/project/list/"/>" class="btn btn-default btn-sm" role="button">Cancel</a>
+            <a href="<spring:url value="/servlet01/project/list/"/>" class="btn btn-default btn-sm"
+               role="button">Cancel</a>
 
             <spring:url value="/servlet01/project/add2/" var="backUrl"/>
             <form:form method="get" action="${backUrl}" style="display: inline;">
