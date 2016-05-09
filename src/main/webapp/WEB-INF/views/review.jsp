@@ -39,7 +39,7 @@
 
         <b>Project id: </b> ${project.id}<br/>
         <b>Project name: </b> ${project.name}<br/>
-        <b>Description: </b> ${project.desc}
+        <b>Description: </b> ${project.desc}<br />
         <b>People Involved: </b> ${project.peopleInvolved}<br/>
         <b>Is Finished: </b>
         <c:choose>
@@ -53,17 +53,37 @@
         <br/>
         <b>Indicators: </b>${project.indicators}<br/>
         <b>Project manager: </b>${project.projectManager.name} ${project.projectManager.surname}<br/>
-        <b>Points of Contact: </b>${project.pointsOfContact}
+        <b>Points of Contact: </b>${project.pointsOfContact}</br></br>
+
+        <div class="alert alert-info" role="alert">
+
+            <a href="<spring:url value="/servlet01/project/list/"/>" class="btn btn-default btn-sm" role="button">Cancel</a>
+
+            <spring:url value="/servlet01/project/add2/" var="backUrl"/>
+            <form:form method="get" action="${backUrl}" style="display: inline;">
+                <button type="submit" class="btn btn-default btn-sm">Back</button>
+            </form:form>
+
+            <spring:url value="/servlet01/project/confirm/" var="confirmUrl"/>
+            <form:form method="post" action="${confirmUrl}" style="display: inline;">
+
+                <c:choose>
+                    <c:when test="${errors != null}">
+                        <button type="submit" class="btn btn-default btn-sm" disabled>Confirm</button>
+                    </c:when>
+                    <c:otherwise>
+                        <button type="submit" class="btn btn-default btn-sm">Confirm</button>
+                    </c:otherwise>
+                </c:choose>
+
+            </form:form>
+
+        </div>
+
+
     </div>
 
-    <spring:url value="/servlet01/project/confirm/" var="confirmUrl"/>
-    <form:form method="post" action="${confirmUrl}">
-        <button type="submit" class="btn btn-default btn-lg">Confirm</button>
-    </form:form>
-
 </div>
-
-<a href="<spring:url value="/servlet01/project/list/"/>">Back to projects</a>
 
 </body>
 </html>

@@ -17,8 +17,8 @@
                    aria-expanded="false">Projects <span class="caret"></span></a>
 
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="<spring:url value="/servlet01/project/add/"/>">Add Project (Data Binding)</a></li>
-                    <li><a href="<spring:url value="/servlet01/project/add2/"/>">Add Project (Spring Tag Library)</a></li>
+                    <li><a href="<spring:url value="/servlet01/project/add/"/>" style="display: none;">Add Project (Data Binding)</a></li>
+                    <li><a href="<spring:url value="/servlet01/project/add2/"/>">Add Project</a></li>
                     <li><a href="<spring:url value="/servlet01/project/list/"/>">Projects</a></li>
                     <li><a href="<spring:url value="/servlet01/test/"/>">Test</a></li>
                 </ul>

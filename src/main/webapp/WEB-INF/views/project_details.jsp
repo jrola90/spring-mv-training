@@ -40,11 +40,15 @@
         <br/>
         <b>Indicators: </b>${project.indicators}<br/>
         <b>Project manager: </b>${project.projectManager.name} ${project.projectManager.surname}<br/>
-        <b>Points of Contact: </b>${project.pointsOfContact}
+        <b>Points of Contact: </b>${project.pointsOfContact} <br/><br/>
+
+    <div class="alert alert-info" role="alert">
+        <a href="<spring:url value="/servlet01/project/list/"/>" class="btn btn-default btn-sm" role="button">Back to projects</a>
+    </div>
+
     </div>
 
 </div>
-<a href="<spring:url value="/servlet01/project/list/"/>">Back to projects</a>
 
 </body>
 </html>
