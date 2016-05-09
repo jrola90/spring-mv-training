@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.jrola.trainings.daos.ProjectsDao;
 import pl.jrola.trainings.dtos.Project;
+import pl.jrola.trainings.exceptions.ProjectNotFoundException;
 
 import java.util.List;
 
@@ -30,6 +31,9 @@ public class ProjectService {
                 project = item;
             }
         }
+
+        if (project == null)
+            throw new ProjectNotFoundException("Project with ID = " + id + " was not found.");
 
         return project;
     }

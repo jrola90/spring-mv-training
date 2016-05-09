@@ -3,11 +3,11 @@ package pl.jrola.trainings.controllers.p01;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 import pl.jrola.trainings.dtos.Project;
+import pl.jrola.trainings.exceptions.ProjectNotFoundException;
 import pl.jrola.trainings.services.ProjectService;
 
 import javax.validation.Valid;
@@ -26,6 +26,16 @@ public class ProjectController {
     @Autowired
     private ProjectService service;
 
+    @ExceptionHandler(Exception.class)
+    public ModelAndView error(ProjectNotFoundException exception) {
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("exceptionMessage", "Error occurred: " + exception.getMessage());
+        modelAndView.setViewName("error");
+
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/list/", method = RequestMethod.GET)
     public String findProjects(Model model) {
         model.addAttribute("projects", service.getProjects());
@@ -40,7 +50,6 @@ public class ProjectController {
     }
 
     /*
-
     @RequestMapping(value = "/add/", method = RequestMethod.GET)
     public String addProjectView() {
         return "add";
@@ -52,7 +61,6 @@ public class ProjectController {
         model.addAttribute("result", "Project was added successfully");
         return "add";
     }
-
     */
 
     @RequestMapping(value = "/add2/", method = RequestMethod.GET)
@@ -61,7 +69,7 @@ public class ProjectController {
     }
 
     @RequestMapping(value = "/review/", method = RequestMethod.POST)
-    public String review(@Valid @ModelAttribute Project project, Errors errors) {
+    public String review(@Valid @ModelAttribute Project project) {
         System.out.println("You are trying to add item: " + project);
         return "review";
     }
