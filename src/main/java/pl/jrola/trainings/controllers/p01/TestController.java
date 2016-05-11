@@ -57,4 +57,10 @@ public class TestController {
         return "test";
     }
 
+    @RequestMapping(value = "/xmlViewResolver", method=RequestMethod.GET)
+    public String testXmlResolver() {
+        return "xml_resolver";
+    }
+
+
 }
