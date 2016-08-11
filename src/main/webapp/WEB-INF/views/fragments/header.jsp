@@ -34,6 +34,7 @@
                     <li><a href="<spring:url value="/servlet01/test/exception"/>">Test Exception Handling</a></li>
                     <li><a href="<spring:url value="/servlet01/test/xmlViewResolver"/>">Test XML Resolver</a></li>
                     <li><a href="<spring:url value="/servlet01/test/redirect"/>">Test Redirect</a></li>
+                    <li><a href="<spring:url value="/servlet01/test/redirectWithFlashAttribute"/>">Test Redirect With FlashAttribute</a></li>
                 </ul>
             </li>
 

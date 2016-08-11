@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pl.jrola.trainings.dtos.Project;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -67,6 +68,17 @@ public class TestController {
     public String testRedirect(RedirectAttributes redirectAttributes) {
         redirectAttributes.addAttribute("redirectAttribute", "Redirection happened");
         return "redirect:/servlet01/home";
+    }
+
+    @RequestMapping(value = "/redirectWithFlashAttribute")
+    public String testRedirectWithFlashAttribute(RedirectAttributes redirectAttributes) {
+        Project project = new Project();
+        project.setId(1L);
+        project.setName("Flash Project");
+        project.setDesc("Flash Project Description");
+
+        redirectAttributes.addFlashAttribute("redirectFlashAttribute", project);
+        return "redirect:/servlet01/home2";
     }
 
 }
