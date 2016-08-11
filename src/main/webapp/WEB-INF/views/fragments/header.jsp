@@ -33,6 +33,7 @@
                     <li><a href="<spring:url value="/servlet01/test/methods"/>">Test HTTP Methods</a></li>
                     <li><a href="<spring:url value="/servlet01/test/exception"/>">Test Exception Handling</a></li>
                     <li><a href="<spring:url value="/servlet01/test/xmlViewResolver"/>">Test XML Resolver</a></li>
+                    <li><a href="<spring:url value="/servlet01/test/redirect"/>">Test Redirect</a></li>
                 </ul>
             </li>
 

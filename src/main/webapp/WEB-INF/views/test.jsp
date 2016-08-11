@@ -18,7 +18,6 @@
 </head>
 </head>
 
-
 <jsp:include page="fragments/header.jsp"/>
 
 <form method="get" action="/servlet01/test/go">

@@ -62,5 +62,9 @@ public class TestController {
         return "xml_resolver";
     }
 
+    @RequestMapping(value = "/redirect")
+    public String testRedirect() {
+        return "redirect:/servlet01/home";
+    }
 
 }
