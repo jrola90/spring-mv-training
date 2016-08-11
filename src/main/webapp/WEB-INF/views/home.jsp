@@ -20,7 +20,7 @@
 <jsp:include page="fragments/header.jsp"/>
 
 <div class="container">
-
+    ${redirectAttribute}
 </div>
 
 </body>
