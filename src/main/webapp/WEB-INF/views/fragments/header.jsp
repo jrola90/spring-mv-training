@@ -36,6 +36,7 @@
                     <li><a href="<spring:url value="/servlet01/test/redirect"/>">Test Redirect</a></li>
                     <li><a href="<spring:url value="/servlet01/test/redirectWithFlashAttribute"/>">Test Redirect With FlashAttribute</a></li>
                     <li><a href="<spring:url value="/servlet01/test/scope"/>">Test Scopes</a></li>
+                    <li><a href="<spring:url value="/servlet01/test/json"/>">Test JSON</a></li>
                 </ul>
             </li>
 

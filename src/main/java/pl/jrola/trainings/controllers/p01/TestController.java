@@ -6,13 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.jrola.trainings.beans.RequestScopeBean;
 import pl.jrola.trainings.beans.SessionScopeBean;
 import pl.jrola.trainings.dtos.Project;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by JrQ- on 2016-04-27.
@@ -104,6 +105,22 @@ public class TestController {
         model.addAttribute("sessionScopeBeanCounter", sessionScopeBeanCounter);
 
         return "scope";
+    }
+
+    @RequestMapping("/json")
+    @ResponseBody
+    public Project testJson(HttpServletRequest request, HttpServletResponse response) {
+
+
+
+        Project project = new Project();
+        project.setId(1L);
+        project.setName("Project Name");
+        project.setDesc("Project Description");
+
+        response.setContentType("application/json");
+
+        return project;
     }
 
 }
