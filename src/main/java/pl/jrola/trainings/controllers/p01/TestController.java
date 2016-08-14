@@ -1,11 +1,15 @@
 package pl.jrola.trainings.controllers.p01;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pl.jrola.trainings.beans.RequestScopeBean;
+import pl.jrola.trainings.beans.SessionScopeBean;
 import pl.jrola.trainings.dtos.Project;
 
 import javax.servlet.http.HttpServletRequest;
@@ -79,6 +83,27 @@ public class TestController {
 
         redirectAttributes.addFlashAttribute("redirectFlashAttribute", project);
         return "redirect:/servlet01/home2";
+    }
+
+    @Autowired
+    private RequestScopeBean requestScopeBean;
+
+    @Autowired
+    private SessionScopeBean sessionScopeBean;
+
+    @RequestMapping(value = "/scope", method = RequestMethod.GET)
+    public String testScope(Model model) {
+
+        int requestScopeBeanCounter = requestScopeBean.incrementCounter();
+        int sessionScopeBeanCounter = sessionScopeBean.incrementCounter();
+
+        System.out.println("RequestScopeBean counter: " + requestScopeBeanCounter);
+        System.out.println("SessionScopeBean counter: " + sessionScopeBeanCounter);
+
+        model.addAttribute("requestScopeBeanCounter", requestScopeBeanCounter);
+        model.addAttribute("sessionScopeBeanCounter", sessionScopeBeanCounter);
+
+        return "scope";
     }
 
 }

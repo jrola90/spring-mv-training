@@ -12,7 +12,10 @@
     <mvc:annotation-driven />
 
     <mvc:interceptors>
-        <bean class="pl.jrola.trainings.interceptors.GlobalInterceptor" />
+        <mvc:interceptor>
+            <mvc:mapping path="/home"/>
+            <bean class="pl.jrola.trainings.interceptors.GlobalInterceptor" />
+        </mvc:interceptor>
     </mvc:interceptors>
 
 
