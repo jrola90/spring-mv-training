@@ -109,18 +109,28 @@ public class TestController {
 
     @RequestMapping("/json")
     @ResponseBody
-    public Project testJson(HttpServletRequest request, HttpServletResponse response) {
-
-
+    public Project testJson() {
 
         Project project = new Project();
         project.setId(1L);
         project.setName("Project Name");
         project.setDesc("Project Description");
 
-        response.setContentType("application/json");
-
         return project;
+    }
+
+    @RequestMapping(value = "/converter", method = RequestMethod.GET)
+    public String testConverter1() {
+        return "converter";
+    }
+
+    @RequestMapping(value = "/converter", method = RequestMethod.POST)
+    public String testConverter2(Model model, @RequestParam Project project) {
+
+        System.out.println("Converted from string: " + project);
+        model.addAttribute("project", project);
+
+        return "converter";
     }
 
 }

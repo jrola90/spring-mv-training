@@ -39,6 +39,7 @@
                     <li><a href="<spring:url value="/servlet01/test/json"/>">Test JSON</a></li>
                     <li><a href="<spring:url value="/servlet01/ctrlAdvice01/test"/>">Controller Advice 1</a></li>
                     <li><a href="<spring:url value="/servlet01/ctrlAdvice02/test"/>">Controller Advice 2</a></li>
+                    <li><a href="<spring:url value="/servlet01/test/converter"/>">Converter</a></li>
                 </ul>
             </li>
 
