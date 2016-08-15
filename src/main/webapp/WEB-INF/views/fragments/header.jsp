@@ -37,9 +37,10 @@
                     <li><a href="<spring:url value="/servlet01/test/redirectWithFlashAttribute"/>">Test Redirect With FlashAttribute</a></li>
                     <li><a href="<spring:url value="/servlet01/test/scope"/>">Test Scopes</a></li>
                     <li><a href="<spring:url value="/servlet01/test/json"/>">Test JSON</a></li>
-                    <li><a href="<spring:url value="/servlet01/ctrlAdvice01/test"/>">Controller Advice 1</a></li>
-                    <li><a href="<spring:url value="/servlet01/ctrlAdvice02/test"/>">Controller Advice 2</a></li>
-                    <li><a href="<spring:url value="/servlet01/test/converter"/>">Converter</a></li>
+                    <li><a href="<spring:url value="/servlet01/ctrlAdvice01/test"/>">Test Controller Advice 1</a></li>
+                    <li><a href="<spring:url value="/servlet01/ctrlAdvice02/test"/>">Test Controller Advice 2</a></li>
+                    <li><a href="<spring:url value="/servlet01/test/converter"/>">Test Converter</a></li>
+                    <li><a href="<spring:url value="/servlet01/test/fileUpload"/>">Test File Upload</a></li>
                 </ul>
             </li>
 

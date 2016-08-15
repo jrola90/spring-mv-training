@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.jrola.trainings.beans.RequestScopeBean;
 import pl.jrola.trainings.beans.SessionScopeBean;
@@ -131,6 +132,21 @@ public class TestController {
         model.addAttribute("project", project);
 
         return "converter";
+    }
+
+    @RequestMapping(value = "/fileUpload", method = RequestMethod.GET)
+    public String testFileUpload1() {
+        return "file_upload";
+    }
+
+    @RequestMapping(value = "/fileUpload", method = RequestMethod.POST)
+    public String testFileUpload2(Model model, @RequestParam("file") MultipartFile file) {
+
+        if (file != null) {
+            model.addAttribute("message", "Uploaded file size is: " + file.getSize());
+        }
+
+        return "file_upload";
     }
 
 }
